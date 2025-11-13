@@ -6,3 +6,4 @@ venv/
 .env
 *.sqlite3
 *.zip
+ 
