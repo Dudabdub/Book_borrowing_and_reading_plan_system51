@@ -1,6 +1,5 @@
-# BookTrack - 图书借阅与读书计划系统（增强版）
+#图书借阅与读书计划系统
 
-## 快速开始
 
 1. 创建虚拟环境并激活
 ```bash
@@ -9,7 +8,7 @@ source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-2. 初始化数据库（会创建示例用户和样例数据）
+2. 初始化数据库
 ```bash
 python init_db.py
 ```
