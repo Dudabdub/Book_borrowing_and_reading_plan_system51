@@ -4,7 +4,7 @@ from app import db
 from app.models import Book, Borrow, Plan, User
 from datetime import datetime, timedelta
 from sqlalchemy import or_
-
+ 
 bp = Blueprint('main', __name__, template_folder='templates')
 
 @bp.route('/')
