@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 app = create_app()
 with app.app_context():
     db.drop_all()
-    db.create_all()
+    db.create_all() 
 
     # create demo user
     u = User(username='demo', email='demo@example.com', password_hash=generate_password_hash('password'))
