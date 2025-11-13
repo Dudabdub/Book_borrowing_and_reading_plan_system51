@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>创建读书计划</h2>
+<form method="post">
+  <div class="mb-3">
+    <label>计划名称</label>
+    <input class="form-control" name="title" required>
+  </div>
+  <div class="mb-3">
+    <label>目标书本数</label>
+    <input class="form-control" type="number" name="target" value="1">
+  </div>
+  <div class="mb-3">
+    <label>结束日期（可选）</label>
+    <input class="form-control" type="date" name="end_date">
+  </div>
+  <button class="btn btn-primary">创建</button>
+</form>
+{% endblock %}

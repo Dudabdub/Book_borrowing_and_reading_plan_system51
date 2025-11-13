@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>我的读书计划</h2>
+<a class="btn btn-primary mb-3" href="{{ url_for('main.add_plan') }}">新建计划</a>
+<div class="row">
+{% for p in plans %}
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5>{{ p.title }}</h5>
+        <p>目标: {{ p.target_books }} 本 | 已完成: {{ p.completed_books }} 本</p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: {{ (p.completed_books / p.target_books * 100) if p.target_books>0 else 0 }}%">
+            {{ (p.completed_books / p.target_books * 100) if p.target_books>0 else 0 }}%
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+  <p>暂无计划</p>
+{% endfor %}
+</div>
+{% endblock %}

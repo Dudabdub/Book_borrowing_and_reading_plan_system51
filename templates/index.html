@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <h2>仪表盘</h2>
+    <p>图书总数: {{ total_books }} | 当前借出: {{ borrowed }}</p>
+    <h5>热门图书</h5>
+    <ul>
+    {% for b in top_books %}
+      <li>{{ b.title }} (借阅 {{ b.count }} 次)</li>
+    {% else %}
+      <li>暂无数据</li>
+    {% endfor %}
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <h5>我的读书计划</h5>
+    {% for p in plans %}
+      <div class="card mb-2">
+        <div class="card-body">
+          <h6 class="card-title">{{ p.title }}</h6>
+          <p class="card-text">目标: {{ p.target_books }} 本，已完成: {{ p.completed_books }} 本</p>
+        </div>
+      </div>
+    {% else %}
+      <p>暂无计划</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

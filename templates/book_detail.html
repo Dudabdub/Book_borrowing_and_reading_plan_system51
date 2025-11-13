@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ book.title }}</h2>
+<p>作者: {{ book.author }}</p>
+<p>可借: {{ book.available_copies }} / {{ book.total_copies }}</p>
+<form method="post" action="{{ url_for('main.borrow_book', book_id=book.id) }}" class="mb-3">
+  <label>借阅天数</label>
+  <input name="days" class="form-control" value="14" />
+  <button class="btn btn-success mt-2">借阅</button>
+</form>
+<h4>借阅历史</h4>
+<table class="table">
+  <thead><tr><th>用户</th><th>借出日期</th><th>到期日期</th><th>状态</th><th>操作</th></tr></thead>
+  <tbody>
+  {% for br in borrows %}
+    <tr>
+      <td>{{ br.user.username }}</td>
+      <td>{{ br.borrow_date.strftime('%Y-%m-%d') }}</td>
+      <td>{{ br.due_date.strftime('%Y-%m-%d') if br.due_date else '' }}</td>
+      <td>{{ '已归还' if br.returned else '借出中' }}</td>
+      <td>
+        {% if not br.returned and br.user_id == current_user.id %}
+        <form method="post" action="{{ url_for('main.return_book', borrow_id=br.id) }}" style="display:inline">
+          <button class="btn btn-sm btn-warning">归还</button>
+        </form>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

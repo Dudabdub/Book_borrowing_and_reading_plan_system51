@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>学习仪表盘（演示）</h1>
+<div class="stats">
+  <div class="card">总课程数: {{ total_courses }}</div>
+  <div class="card">待完成任务: {{ pending_tasks }}</div>
+  <div class="card">已完成任务: {{ completed_tasks }}</div>
+</div>
+
+<h2>即将到期的任务</h2>
+<ul>
+{% for t in upcoming_tasks %}
+  <li>{{ t.title }} - {{ t.due_date }}</li>
+{% else %}
+  <li>无</li>
+{% endfor %}
+</ul>
+
+<h2>课程</h2>
+<ul>
+{% for c in courses %}
+  <li>{{ c.name }}</li>
+{% else %}
+  <li>暂无课程</li>
+{% endfor %}
+</ul>
+{% endblock %}

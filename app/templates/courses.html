@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>课程列表</h1>
+<a href="{{ url_for('main.add_course') }}">添加课程</a>
+<ul>
+{% for c in courses %}
+  <li>{{ c.name }}</li>
+{% else %}
+  <li>暂无课程</li>
+{% endfor %}
+</ul>
+{% endblock %}

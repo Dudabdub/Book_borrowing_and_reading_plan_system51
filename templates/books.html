@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>图书馆藏</h2>
+<form class="d-flex mb-3" method="get" action="{{ url_for('main.books') }}">
+  <input class="form-control me-2" name="q" value="{{ q }}" placeholder="搜索书名或作者">
+  <button class="btn btn-outline-success">搜索</button>
+</form>
+<a class="btn btn-primary mb-2" href="{{ url_for('main.add_book') }}">添加新书</a>
+<div class="row">
+  {% for book in items.items %}
+  <div class="col-md-3 mb-3">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ book.title }}</h5>
+        <p class="card-text">{{ book.author }}</p>
+        <p>可借: {{ book.available_copies }}/{{ book.total_copies }}</p>
+        <a href="{{ url_for('main.book_detail', book_id=book.id) }}" class="btn btn-sm btn-primary">详情</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<nav>
+  <ul class="pagination">
+    {% if items.has_prev %}<li class="page-item"><a class="page-link" href="{{ url_for('main.books', page=items.prev_num, q=q) }}">上一页</a></li>{% endif %}
+    {% if items.has_next %}<li class="page-item"><a class="page-link" href="{{ url_for('main.books', page=items.next_num, q=q) }}">下一页</a></li>{% endif %}
+  </ul>
+</nav>
+{% endblock %}

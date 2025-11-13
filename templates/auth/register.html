@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>注册</h2>
+<form method="post">
+  <div class="mb-3">
+    <label>用户名</label>
+    <input class="form-control" name="username" required>
+  </div>
+  <div class="mb-3">
+    <label>邮箱</label>
+    <input class="form-control" name="email" required>
+  </div>
+  <div class="mb-3">
+    <label>密码</label>
+    <input class="form-control" name="password" type="password" required>
+  </div>
+  <button class="btn btn-primary">注册</button>
+</form>
+{% endblock %}
