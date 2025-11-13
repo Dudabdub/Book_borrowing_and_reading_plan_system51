@@ -5,7 +5,7 @@ from app.utils.progress_calculator import calculate_course_progress
 from datetime import datetime
 
 bp = Blueprint('main', __name__)
-
+ 
 @bp.route('/')
 def index():
     courses = Course.query.limit(10).all()
