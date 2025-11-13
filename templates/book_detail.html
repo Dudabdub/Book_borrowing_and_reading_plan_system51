@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>{{ book.title }}</h2>
+<h2>{{ book.title }}</h2> 
 <p>作者: {{ book.author }}</p>
 <p>可借: {{ book.available_copies }} / {{ book.total_copies }}</p>
 <form method="post" action="{{ url_for('main.borrow_book', book_id=book.id) }}" class="mb-3">
