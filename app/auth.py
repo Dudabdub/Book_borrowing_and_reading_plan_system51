@@ -6,7 +6,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 
 bp = Blueprint('auth', __name__, template_folder='templates')
 
-@bp.route('/register', methods=['GET','POST'])
+@bp.route('/register', methods=['GET','POST']) 
 def register():
     if request.method == 'POST':
         username = request.form.get('username')
