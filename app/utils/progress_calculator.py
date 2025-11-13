@@ -16,7 +16,7 @@ def calculate_course_progress(course):
         experiment_progress * course.experiment_weight +
         exam_progress * course.exam_weight
     )
-
+    
     return {
         'total': round(total_progress * 100, 2),
         'homework': round(homework_progress * 100, 2),
